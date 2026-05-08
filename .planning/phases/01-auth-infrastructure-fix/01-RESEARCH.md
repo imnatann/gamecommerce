@@ -738,22 +738,19 @@ php artisan route:list --name=two-factor
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **User.locale kolom**
-   - Yang kita tahu: `SetLocale.php:14` mencoba `$request->user()?->locale` sebagai sumber locale
-   - Yang tidak jelas: Apakah kolom `locale` ada di users migration/model?
-   - Rekomendasi: Cek migration `0001_create_users_table.php`. Jika tidak ada, tambahkan ke migration baru atau abaikan (fallback ke session sudah cukup).
+1. **User.locale kolom — RESOLVED**
+   - Verified: kolom `locale` TIDAK ada di `database/migrations/0001_01_01_000000_create_users_table.php` maupun di `2026_05_08_111351_align_core_gamecommerce_schema.php`. `SetLocale.php:14` `$request->user()?->locale` selalu null untuk semua user, sehingga middleware fallback ke `session('locale')` lalu `getPreferredLanguage()`. PERILAKU INI OK untuk Phase 1.
+   - Resolusi: TIDAK menambahkan kolom `locale` di Phase 1 (out-of-scope). Plan 05 menambahkan endpoint `POST /locale/{locale}` yang menulis ke `session('locale')` — sudah cukup untuk REQ-nfr-localization. Database persistence bisa ditambah di phase berikutnya jika diperlukan.
 
-2. **Order model seller_id**
-   - Yang kita tahu: `User.php:109-112` `ordersAsSeller()` menuju `OrderItem::seller_id`, bukan `Order::seller_id`
-   - Yang tidak jelas: Apakah `OrderPolicy::view()` harus cek `$order->buyer_id` saja, atau juga seller via items?
-   - Rekomendasi: Policy harus `$order->items()->where('seller_id', $user->id)->exists()` — ini melibatkan query, pertimbangkan eager loading.
+2. **Order model seller_id — RESOLVED**
+   - Verified: `Order` model tidak punya `seller_id`. `OrderItem` punya `seller_id` (denormalized snapshot dari `Product.seller_id`). `User::ordersAsSeller()` mengembalikan `HasMany OrderItem`, bukan `Order`.
+   - Resolusi: `OrderPolicy::view()` mengecek dua jalur — (a) `$order->buyer_id === $user->id` untuk buyer, (b) `$order->items()->where('seller_id', $user->id)->exists()` untuk seller. Diimplementasikan di Plan 02 (OrderPolicy). Eager loading items direkomendasikan untuk performa.
 
-3. **KYC status `verified` vs `approved`**
-   - Yang kita tahu: `User.php:84-87` `getKycStatusAttribute()` mengubah `'verified'` menjadi `'approved'` saat dibaca. `isKycVerified()` (line 171-174) checks `['verified', 'approved']`.
-   - Yang tidak jelas: Admin panel menyimpan nilai apa — `'verified'` atau `'approved'`?
-   - Rekomendasi: Standarisasi ke `'approved'` di database. Accessor yang ada adalah workaround — bisa menyebabkan bug.
+3. **KYC status `verified` vs `approved` — RESOLVED**
+   - Verified: DB menyimpan `'verified'` (lihat seeders, AdminUserController, UserController). Accessor `getKycStatusAttribute` mengubah ke `'approved'` saat dibaca — legacy quirk. `isKycVerified()` cek `['verified', 'approved']` sebagai workaround.
+   - Resolusi: **Canonical value adalah `'verified'` (DB)**. Plan 05 menghapus accessor remapping dan mengubah `isKycVerified()` ke `getRawOriginal('kyc_status') === 'verified'`. Plan-checker mengkonfirmasi tidak ada consumer yang bergantung pada nilai `'approved'` — semua existing references (EnsureKycVerified.php, AdminUserController.php, UserController.php) menggunakan `'verified'`.
 
 ---
 
