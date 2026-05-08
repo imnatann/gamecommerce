@@ -27,7 +27,7 @@
                 @endphp
                 @foreach($quickCategories as $cat)
                     <a href="{{ $cat['url'] }}" class="gc-quick-category">
-                        <span class="gc-quick-category-icon text-[var(--color-gc-primary)]">{{ $cat['icon'] }}</span>
+                        <span class="gc-quick-category-icon text-[var(--color-gc-primary)]">{!! $cat['icon'] !!}</span>
                         <span class="gc-quick-category-label">{{ $cat['label'] }}</span>
                     </a>
                 @endforeach
