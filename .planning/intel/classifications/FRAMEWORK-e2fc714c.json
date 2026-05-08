@@ -1,0 +1,35 @@
+{
+  "source_path": "/Users/tokaf/gamecommerce/FRAMEWORK.md",
+  "type": "SPEC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "GameCommerce - Framework Architecture",
+  "summary": "Defines the full Laravel project structure, architecture patterns, dependencies, middleware, queue jobs, caching strategy, and security contracts for the GameCommerce marketplace.",
+  "scope": [
+    "project structure",
+    "repository pattern",
+    "service layer",
+    "action pattern",
+    "OrderStatus state machine",
+    "middleware stack",
+    "queue architecture",
+    "event system",
+    "caching strategy",
+    "security checklist",
+    "testing strategy",
+    "composer dependencies",
+    "npm dependencies",
+    "Laravel",
+    "Midtrans",
+    "Meilisearch",
+    "Sanctum",
+    "Horizon",
+    "Reverb"
+  ],
+  "cross_refs": [
+    "theme.md"
+  ],
+  "locked": false,
+  "precedence": 1,
+  "notes": ""
+}

@@ -1,0 +1,13 @@
+docs:
+  - path: PLANNING.md
+    type: PRD
+    precedence: 2
+  - path: FRAMEWORK.md
+    type: SPEC
+    precedence: 1
+  - path: theme.md
+    type: SPEC
+    precedence: 1
+  - path: README.md
+    type: DOC
+    precedence: 3

@@ -1,0 +1,30 @@
+{
+  "source_path": "/Users/tokaf/gamecommerce/theme.md",
+  "type": "SPEC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "GameCommerce — Theme Design System",
+  "summary": "Technical specification for the GameCommerce custom shadcn-inspired design system built on Tailwind CSS 4 for Laravel Blade and Alpine.js.",
+  "scope": [
+    "design system",
+    "color tokens",
+    "typography",
+    "spacing",
+    "component library",
+    "buttons",
+    "cards",
+    "badges",
+    "navbar",
+    "search bar",
+    "animations",
+    "responsive breakpoints",
+    "Tailwind CSS v4 configuration",
+    "Alpine.js components",
+    "accessibility",
+    "performance budgets"
+  ],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": 1,
+  "notes": ""
+}

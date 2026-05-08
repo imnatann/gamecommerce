@@ -1,0 +1,13 @@
+{
+  "source_path": "/Users/tokaf/gamecommerce/README.md",
+  "type": "DOC",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "GameCommerce",
+  "summary": "Overview and local development setup for GameCommerce, a Laravel marketplace prototype for digital game products including top-ups, keys, vouchers, and accounts.",
+  "scope": ["GameCommerce", "Laravel", "marketplace", "catalog routes", "authentication", "local development", "SQLite", "routes/web.php"],
+  "cross_refs": ["PLANNING.md"],
+  "locked": false,
+  "precedence": 3,
+  "notes": ""
+}

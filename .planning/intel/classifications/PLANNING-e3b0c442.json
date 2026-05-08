@@ -1,0 +1,30 @@
+{
+  "source_path": "/Users/tokaf/gamecommerce/PLANNING.md",
+  "type": "PRD",
+  "confidence": "high",
+  "manifest_override": true,
+  "title": "GameCommerce - Game Marketplace Platform",
+  "summary": "Product plan for a digital game marketplace covering user roles, feature modules, page map, database schema, API endpoints, tech stack, and project timeline.",
+  "scope": [
+    "authentication",
+    "product catalog",
+    "search",
+    "transaction system",
+    "seller dashboard",
+    "admin panel",
+    "wallet",
+    "payment gateway",
+    "dispute system",
+    "notifications",
+    "vouchers",
+    "flash sale",
+    "real-time chat",
+    "escrow",
+    "PWA",
+    "GameCommerce"
+  ],
+  "cross_refs": [],
+  "locked": false,
+  "precedence": 2,
+  "notes": ""
+}
