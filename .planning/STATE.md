@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-05-08)
 ## Current Position
 
 Phase: 1 of 14 (Auth Infrastructure Fix)
-Plan: 2 of 6 in current phase (Plan 02 complete)
-Status: Executing — Wave 1 in progress
-Last activity: 2026-05-08 — Plan 01-02 complete (Policies + AppServiceProvider Gate registration)
+Plan: 6 of 6 in current phase (Plan 06 complete — awaiting human checkpoint)
+Status: Checkpoint — awaiting human-verify for Wave 2
+Last activity: 2026-05-08 — Plan 01-06 complete (AuthRoutesTest 10/10 pass; full suite 39 pass 8 fail)
 
-Progress: [█░░░░░░░░░] 7% (1/14 phases, 2/6 plans in Phase 1)
+Progress: [█░░░░░░░░░] 10% (1/14 phases, 6/6 plans in Phase 1 — checkpoint)
 
 ## Performance Metrics
 
@@ -46,6 +46,8 @@ Recent decisions affecting current work:
 - [Plan 01-02] Gate::before() return null (bukan false) untuk non-super-admin agar policy chain normal tetap dievaluasi
 - [Plan 01-02] SellerPolicy::submitKyc menggunakan getRawOriginal() untuk bypass accessor KYC status mapping
 - [Plan 01-02] Policy registration di AppServiceProvider::boot(), bukan AuthServiceProvider (Laravel 12 pattern)
+- [Plan 01-06] two-factor.login returns 302 for unauthenticated guest (no 2FA session) — assertContains([200,302]) correct
+- [Plan 01-06] UserFactory missing kyc_status default causes 5 test failures — follow-up needed
 
 ### Pending Todos
 
@@ -67,6 +69,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-08 (Plan 01-02)
-Stopped at: Plan 01-02 complete — 3 Policies + AppServiceProvider Gate registration (43c22e3, 7b8d561)
-Resume file: .planning/phases/01-auth-infrastructure-fix/01-02-SUMMARY.md
+Last session: 2026-05-08 (Plan 01-06)
+Stopped at: Plan 01-06 — CHECKPOINT: human-verify Wave 1 implementasi (KYC form, ban redirect, locale switch)
+Resume file: .planning/phases/01-auth-infrastructure-fix/01-06-SUMMARY.md
