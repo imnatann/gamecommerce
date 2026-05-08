@@ -38,8 +38,15 @@ Milestone M1 (Phase 1–7) membangun Foundation MVP: dari menutup gap infrastruk
   2. User dapat register dengan email/password dan Google OAuth; email verification flow berjalan
   3. Seller yang belum KYC di-redirect ke halaman verifikasi KYC saat mencoba akses /seller/products
   4. Middleware EnsureAdmin, EnsureSeller, EnsureKycVerified memblokir akses tidak sah dengan response HTTP 403
-  5. ProductPolicy, OrderPolicy, SellerPolicy ada dan di-register di AuthServiceProvider
-**Plans**: TBD
+  5. ProductPolicy, OrderPolicy, SellerPolicy ada dan di-register di AppServiceProvider
+**Plans**: 6 plans
+Plans:
+- [ ] 01-01-PLAN.md — Test scaffold (Wave 0): 10 file test untuk semua requirements
+- [ ] 01-02-PLAN.md — Policies + AppServiceProvider: ProductPolicy, OrderPolicy, SellerPolicy + Gate registration
+- [ ] 01-03-PLAN.md — EnsureNotBanned middleware + bootstrap/app.php registration
+- [ ] 01-04-PLAN.md — KycController + KycSubmissionRequest + seller routes + KYC Blade view
+- [ ] 01-05-PLAN.md — LocaleController + locale route + User KYC accessor refactor
+- [ ] 01-06-PLAN.md — AuthRoutesTest + full test suite verification + human checkpoint
 **UI hint**: yes
 
 ### Phase 2: Profile, Wallet & Category Foundation
@@ -208,7 +215,7 @@ Milestone M1 (Phase 1–7) membangun Foundation MVP: dari menutup gap infrastruk
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Auth Infrastructure Fix | 0/TBD | Not started | - |
+| 1. Auth Infrastructure Fix | 0/6 | Not started | - |
 | 2. Profile, Wallet & Category Foundation | 0/TBD | Not started | - |
 | 3. Catalog & Search | 0/TBD | Not started | - |
 | 4. Cart, Checkout & Payment | 0/TBD | Not started | - |
